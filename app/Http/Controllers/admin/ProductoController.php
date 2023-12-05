@@ -55,11 +55,7 @@ class ProductoController extends Controller
      public function generarPDF($id)
      {
          $pantalones = producto::where('id', $id)->get();
-
-         // Convierte la colección en un array
-         $data = $pantalones->toArray();
-
-         $pdf = Pdf::loadView('admin.producto.show', compact('pantalones'));
+         $pdf = Pdf::loadView('reporte', compact('pantalones'));
 
          return $pdf->download('invoice.pdf');
      }
@@ -108,7 +104,7 @@ class ProductoController extends Controller
         $pantalones->talla21=$request->talla60;
         $pantalones->save();
         // En el controlador después de actualizar los datos
-        return redirect()->route('admin.producto.edit', $pantalones->id)->with('success', '¡Datos actualizados con éxito!');
+        return redirect()->route('admin.producto.show', $pantalones->id)->with('success', '¡Datos actualizados con éxito!');
 
     }
 

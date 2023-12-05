@@ -20,6 +20,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('usuario.inicio');
 });
+Route::get('/reporte', function () {
+    return view('reporte');
+});
 
 
 Route::get('/verpantalones/{id}', [ProductoController::class, 'index2'])->name('admin.producto.index2');
